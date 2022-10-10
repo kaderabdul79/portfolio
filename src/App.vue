@@ -1,12 +1,15 @@
 <template>
   <div>
-    <router-view />
+    <SiteHeader/>
+    <!-- <router-view /> -->
   </div>
 </template>
 
 <script>
-export default {
+import SiteHeader from './components/SiteHeader.vue';
 
+export default {
+    components: { SiteHeader }
 }
 </script>
 
