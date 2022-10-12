@@ -1,7 +1,8 @@
 <template>
   <div>
     <SiteHeader/>
-    <contact-me />
+    <Education />
+    <ContactMe />
     <!-- <router-view /> -->
     <SiteFooter/>
   </div>
@@ -9,11 +10,12 @@
 
 <script>
 import ContactMe from './components/ContactMe.vue';
+import Education from './components/Education.vue';
 import SiteFooter from './components/SiteFooter.vue';
 import SiteHeader from './components/SiteHeader.vue';
 
 export default {
-    components: { SiteHeader, SiteFooter, ContactMe }
+    components: { SiteHeader, SiteFooter, ContactMe, Education }
 }
 </script>
 
