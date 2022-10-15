@@ -4,23 +4,11 @@
     <div id="particles-js">
         <nav id="nav" data-aos="fade-in">
             <div class="container nav-container">
-                <router-link to="/" id="logo" class="text-xl md:text-2xl font-bold text-white">
+                <router-link to="/" id="logo" class="uppercase text-3xl tracking-wider md:text-2xl text-white main-font">
                     Abdul Kader
                 </router-link>
                 <ul class="hide-for-mobile nav-links flex">
-                    <li><a href="#projects" class="link"><i class="fas fa-code"></i> Projects</a> </li>
-                    <li>
-                        <a href="#skills" class="link"><i class="fas fa-tools"></i> Skills</a>
-                    </li>
-                    <li>
-                        <a href="#education" class="link"><i class="fas fa-user-graduate"></i> Education</a>
-                    </li>
-                    <li>
-                        <a href="" class="link" target="_blank"><i class="fas fa-file"></i> Resume</a>
-                    </li>
-                    <li>
-                        <a href="#contact" class="link"><i class="fas fa-envelope"></i> Contact</a>
-                    </li>
+                    <li v-for="(item,index) in navigation" :key="index"><a :href="item.url" class="link"><i :class="item.icon"></i> {{item.title}}</a> </li>
                 </ul>
             </div>
 
@@ -28,25 +16,10 @@
                 <div class="container">
                     <div class="mobile-menu-links">
                         <ul class="flex">
-                            <li>
-                                <a href="#projects" class="link blue-hover">Projects</a>
-                            </li>
-                            <li>
-                                <a href="#skills" class="link blue-hover">Skills</a>
-                            </li>
-                            <li>
-                                <a href="#education" class="link blue-hover">Education</a>
-                            </li>
-                            <li>
-                                <a href="" class="link" target="_blank"><i class="fas fa-file"></i> Resume</a>
-                            </li>
-                            <li>
-                                <a href="#contact" class="link blue-hover">Contact</a>
-                            </li>
+                            <li v-for="(item,index) in navigation" :key="index"><a :href="item.url" class="link blue-hover">{{item.title}}</a> </li>
                         </ul>
                     </div>
                 </div>
-
             </div>
         </nav>
 
@@ -55,7 +28,7 @@
             <div data-aos="fade-up">
                 <h1 class="h1">Hi, I'm <span class="main-font text-blue">Abdul Kader</span></h1>
                 <p class="student" id="student">
-                    I am an industrious , self-motivated Software Engineer with excellent knowledge. I am Passionate about learning and staying up to date with the latest technologies & a clear communicator.
+                    I am an industrious , self-motivated Software Engineer with excellent knowledge. I am Passionate about learning and staying up to date with the latest technologies.Looking for Junior Software Engineer or Web Developer (position)
                 </p>
                 <div class="hero-btns">
                     <a href="#projects" class="btn-blue"><i class="fas fa-code"></i> Projects</a>
@@ -84,10 +57,39 @@
 </template>
 
 <script>
+import { reactive } from 'vue';
+
 export default {
     setup() {
+        const navigation = reactive([
+        {
+            title: "Projects",
+            icon: "fas fa-code",
+            url: "#projects"
+        },
+        {
+            title: "Skills",
+            icon: "fas fa-tools",
+            url: "#skills"
+        },
+        {
+            title: "Education",
+            icon: "fas fa-user-graduate",
+            url: "#education"
+        },
+        {
+            title: "Resume",
+            icon: "fas fa-file",
+            url: "#resume"
+        },
+        {
+            title: "Contact",
+            icon: "fas fa-envelope",
+            url: "#contact"
+        },
+        ])
 
-        return {}
+        return {navigation}
     }
 }
 </script>
