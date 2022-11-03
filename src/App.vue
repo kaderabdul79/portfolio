@@ -1,11 +1,7 @@
 <template>
   <div v-cloak>
-    <SiteHeader/>
-    <MyProjects/>
-    <MySkills/>
-    <Education />
-    <ContactMe />
-    <SiteFooter/>
+    <HomeView />
+    <!-- vue plugin to move/scroll from bottom to top -->
     <transition name="fade">
     <div id="pageTop" class="fixed right-4 bottom-2 cursor-pointer bg-blue-500 rounded" v-show="scY > 300" @click="toTop">
       <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
@@ -14,21 +10,15 @@
         <path d="M18 15l-6-6-6 6"/>
       </svg>
     </div>
-  </transition>
+    </transition>
     <!-- <router-view /> -->
   </div>
 </template>
 
 <script>
-import ContactMe from './components/ContactMe.vue';
-import Education from './components/Education.vue';
-import MyProjects from './components/MyProjects.vue';
-import MySkills from './components/MySkills.vue';
-import SiteFooter from './components/SiteFooter.vue';
-import SiteHeader from './components/SiteHeader.vue';
-
+import HomeView from './views/HomeView.vue';
 export default {
-    components: { SiteHeader, SiteFooter, ContactMe, Education, MySkills, MyProjects },
+    components: { HomeView },
     data() {
       return {
         scTimer: 0,
