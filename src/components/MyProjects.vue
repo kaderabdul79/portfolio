@@ -34,10 +34,9 @@ import apartment_project_using_react_firebase_bootstrap from '../assets/images/a
 import charitox_donation_app_using_react_firebase_css from '../assets/images/charitox_donation_app_using_react_firebase_css.jpg'
 import jobslab_fronted_react_firebase from '../assets/images/jobslab_fronted_react_firebase.png'
 import laravel_bootstarp_ecommerce_app_dashboard from '../assets/images/laravel_bootstarp_ecommerce_app_dashboard.png'
+import laravel_react_StudentsCRUD from '../assets/images/laravel_react_StudentsCRUD.png'
 
-import {
-    reactive
-} from 'vue';
+import {reactive} from 'vue';
 
 export default {
     setup() {
@@ -53,11 +52,20 @@ export default {
             {
                 name: "laravel_vue_composition_api_crud",
                 id: "laravel_vue_composition_api_crud",
-                madeWith: ["laravel", "vue","tailwindcss"],
+                madeWith: ["laravel", "vue", "tailwindcss"],
                 description: "After Learning Session, developing small Vue3 Composition API with laravel api a crud based application.",
                 ImagesURL: laravel_vue_composition_api_crud,
                 url: "",
                 github: "https://github.com/kaderabdul79/rest-api-crud-vue-laravel"
+            },
+            {
+                name: "laravel_react_StudentsCRUD",
+                id: "laravel_react_StudentsCRUD",
+                madeWith: ["laravel", "react", "bootstrap"],
+                description: "Simple Students CRUD Project to learn how to consume Api which created by laravel and use in react.",
+                ImagesURL: laravel_react_StudentsCRUD,
+                url: "https://github.com/kaderabdul79/StudentsCRUDFrontend",
+                github: "https://github.com/kaderabdul79/studentsCRUDBackend"
             },
             {
                 name: "laravel_bootstarp_ecommerce_app_dashboard",
@@ -78,32 +86,23 @@ export default {
                 github: "https://github.com/kaderabdul79/apartment"
             },
             {
+                name: "Charitox",
+                id: "charitox",
+                madeWith: ["react", "firebase", "css"],
+                description: "To make easy to donate fundriser.People are use facebook but they need to convert currency bd to usd.Through this website directly you can donate.",
+                ImagesURL: charitox_donation_app_using_react_firebase_css,
+                url: "https://charitox-fa919.web.app/",
+                github: "https://github.com/kaderabdul79/apartment"
+            },
+            {
                 name: "JobsLab",
                 id: "jobslab",
-                madeWith: ["react", "firebase","MUI5"],
+                madeWith: ["react", "firebase", "MUI5"],
                 description: "Anyone can apply for the job but before need to register.Easily You will manage a job. and Company also can post job and they will manage corresponding job they posted.",
                 ImagesURL: jobslab_fronted_react_firebase,
                 url: "https://jobslist-7d4bc.web.app/",
                 github: "https://github.com/kaderabdul79/JobsLab"
             },
-            {
-                name: "Daily Shop",
-                id: "dailyshop",
-                madeWith: ["bootstrap", "laravel"],
-                description: "To make easy in our daily life.Customer can buy product,implement add to cart and admin can easily maintain the products,categories,brands and many more.",
-                ImagesURL: "dailyShop_dashboard.png ",
-                url: "",
-                github: "https://github.com/kaderabdul79/dailyShop"
-            },
-            {
-                name: "Charitox",
-                id: "charitox",
-                madeWith: ["react", "firebase","css"],
-                description: "To make easy to donate fundriser.People are use facebook but they need to convert currency bd to usd.Through this website directly you can donate.",
-                ImagesURL: charitox_donation_app_using_react_firebase_css,
-                url: "https://charitox-fa919.web.app/",
-                github: "https://github.com/kaderabdul79/apartment"
-            }
         ])
 
         return {

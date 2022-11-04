@@ -5,12 +5,12 @@
         <h2 class="main-font" data-aos="fade-in">My <span class="text-blue main-font">Education</span></h2>
 
         <div class="education-card" data-aos="zoom-in">
-            <div class="education-card-column">
+            <div v-for="education in educationDetails" :key="education.id" class="education-card-column border-b-2 last:border-b-0">
               <div class="card-column-large">
-                <h4 class="education-year">2018 - 2021</h4>
-                <h4>American International University - Bangladesh (AIUB)</h4>
-                <p>Computer Science & Engineering (CSE)</p>
-                <p>CGPA 3.57 out of 4.00</p>
+                <h4 class="education-year">{{education.startEndData}}</h4>
+                <h4>{{education.institution}}</h4>
+                <p>{{education.degree}}</p>
+                <p>CGPA {{education.myresult}} out of {{education.outOf}}</p>
               </div>
             </div>
         </div>
@@ -19,8 +19,28 @@
 </template>
 
 <script>
+import { reactive } from 'vue';
+
     export default {
-        
+        setup(){
+          const educationDetails = reactive([
+            {
+              id: 1,
+              institution: "American International University - Bangladesh (AIUB)",
+              myresult: 3.59,outOf: 4.00,
+              degree: "Computer Science & Engineering (CSE)",
+              startEndData: "2018 - 2021"
+            },
+            {
+              id: 2,
+              institution: "Milestone College",
+              myresult: 4.83,outOf: 5.00,
+              degree: "Science",
+              startEndData: "2015 - 2017"
+            },
+          ])
+          return {educationDetails}
+        }
     }
 </script>
 

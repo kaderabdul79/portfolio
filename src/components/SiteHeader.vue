@@ -57,39 +57,42 @@
 </template>
 
 <script>
-import { reactive } from 'vue';
+import {
+    reactive
+} from 'vue';
 
 export default {
     setup() {
-        const navigation = reactive([
-        {
-            title: "Projects",
-            icon: "fas fa-code",
-            url: "#projects"
-        },
-        {
-            title: "Skills",
-            icon: "fas fa-tools",
-            url: "#skills"
-        },
-        {
-            title: "Education",
-            icon: "fas fa-user-graduate",
-            url: "#education"
-        },
-        {
-            title: "Resume",
-            icon: "fas fa-file",
-            url: "#resume"
-        },
-        {
-            title: "Contact",
-            icon: "fas fa-envelope",
-            url: "#contact"
-        },
+        const navigation = reactive([{
+                title: "Projects",
+                icon: "fas fa-code",
+                url: "#projects"
+            },
+            {
+                title: "Skills",
+                icon: "fas fa-tools",
+                url: "#skills"
+            },
+            {
+                title: "Education",
+                icon: "fas fa-user-graduate",
+                url: "#education"
+            },
+            {
+                title: "Resume",
+                icon: "fas fa-file",
+                url: "https://drive.google.com/file/d/1smC3T6bbO89_7xDyGuigusYTKg6ejQzH/view?usp=sharing"
+            },
+            {
+                title: "Contact",
+                icon: "fas fa-envelope",
+                url: "#contact"
+            },
         ])
 
-        return {navigation}
+        return {
+            navigation
+        }
     }
 }
 </script>
