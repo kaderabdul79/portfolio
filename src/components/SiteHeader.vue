@@ -81,7 +81,7 @@ export default {
             {
                 title: "Resume",
                 icon: "fas fa-file",
-                url: "https://drive.google.com/file/d/1smC3T6bbO89_7xDyGuigusYTKg6ejQzH/view?usp=sharing"
+                url: "https://drive.google.com/file/d/1tVsHWxxCp7HrRZrHIm0-kvdcBpzm-Llc/view?usp=sharing"
             },
             {
                 title: "Contact",
