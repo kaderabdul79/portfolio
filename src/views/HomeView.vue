@@ -1,6 +1,6 @@
 <template>
     <SiteHeader/>
-    <MyProjects/>
+    <MyProjects class="bg-white"/>
     <MySkills/>
     <Education />
     <ContactMe />

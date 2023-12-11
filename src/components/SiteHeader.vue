@@ -267,12 +267,12 @@ header .socials ul li {
     transition: 0.3s;
     width: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     font-size: 1.5rem;
     width: 100%;
     height: 100%;
+    
 }
-
 header .socials ul li a {
     text-align: right;
     height: 100%;

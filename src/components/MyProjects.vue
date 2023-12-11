@@ -1,32 +1,45 @@
 <template>
-<!-- PROJECTS -->
-<section id="projects" class="projects">
+  <section id="projects" class="projects">
     <div class="container">
-        <h2 class="main-font">My<span class="text-blue main-font"> Projects</span></h2>
+      <h2 class="text-center text-3xl font-bold mb-8">My<span class="text-blue"> Projects</span></h2>
 
-        <div class="project-row" data-aos="fade-up" v-for="project of projectsList" :key="project.id">
-            <div class="project-left">
-                <img class="w-[500] h-[500] aspect-auto" v-bind:src="project.ImagesURL" alt="project showcase image">
+      <div class="flex justify-center space-x-4 mb-4">
+        <button @click="filterProjects('all')" :class="{ 'bg-blue-500': activeFilter === 'all' }" class="btn">All</button>
+        <button @click="filterProjects('laravel')" :class="{ 'bg-blue-500': activeFilter === 'laravel' }" class="btn">Laravel</button>
+        <button @click="filterProjects('vue')" :class="{ 'bg-blue-500': activeFilter === 'vue' }" class="btn">Vue</button>
+        <button @click="filterProjects('react')" :class="{ 'bg-blue-500': activeFilter === 'react' }" class="btn">React</button>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+        <div v-for="project in filteredProjects" :key="project.id" class="bg-white p-4 shadow-md rounded-md">
+          <div class="aspect-w-16 aspect-h-9 mb-4">
+            <img :src="project.ImagesURL" alt="project showcase image" class="object-cover w-full h-full rounded-md">
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-2">{{ project.name }}</h3>
+            <ul class="flex items-center space-x-2 text-gray-600">
+              <li v-for="icon in project.madeWith" :key="icon" class="border-b-3 border-blue-500">{{ icon }}</li>
+            </ul>
+            <p class="text-gray-700 mt-2">{{ project.description }}</p>
+            <div class="mt-4">
+              <a :href="project.url" target="_blank" class="btn-blue btn-small" :disabled="project.url === ''">
+                <i class="fas fa-external-link-alt"></i>
+                <span v-if="project.url === ''">Not Live yet</span>
+                <span v-else>Live</span>
+              </a>
+              <a :href="project.github" target="_blank" class="btn-blue-outline btn-small mx-1"><i class="fab fa-github"></i> Code</a>
             </div>
-            <div class="project-right">
-                <h3>{{project.name}}</h3>
-                <ul class="tech-stack-list flex items-center">
-                    <p class="text-grey"><b>Made with: </b></p>
-                    <li class="tracking-tight	text-xs font-medium border-b-2 pb-2 border-b-[#3b82f6]" v-for="icon in project.madeWith" :key="icon">{{icon}}</li>
-                </ul>
-                <p>{{project.description}}</p>
-                <div class="project-links">
-                    <a :href="project.url" class="btn-blue btn-small" target="_blank"> <i class="fas fa-external-link-alt"></i> Live</a>
-                    <a :href="project.github" class="btn-blue-outline btn-small mx-1" target="_blank"> <i class="fab fa-github"></i> Code</a>
-                </div>
-            </div>
+          </div>
         </div>
-
+      </div>
     </div>
-</section>
+  </section>
 </template>
 
 <script>
+import { ref, computed } from 'vue';
+import job_memo_landing_page from '../assets/images/job_memo_landing_page.png'
+import Inventory_management_dashboard from '../assets/images/Inventory_management_dashboard.png'
 import laravel_vue_blog_app_dashboard from '../assets/images/laravel_vue_blog_app_dashboard.png'
 import laravel_vue_composition_api_crud from '../assets/images/laravel_vue_composition_api_crud.png'
 import laravel_react_student_crud from '../assets/images/laravel_react_student_crud.png'
@@ -36,17 +49,34 @@ import jobslab_fronted_react_firebase from '../assets/images/jobslab_fronted_rea
 import laravel_bootstarp_ecommerce_app_dashboard from '../assets/images/laravel_bootstarp_ecommerce_app_dashboard.png'
 import laravel_react_StudentsCRUD from '../assets/images/laravel_react_StudentsCRUD.png'
 
-import {reactive} from 'vue';
-
 export default {
-    setup() {
-        const projectsList = reactive([{
+  setup() {
+    const projectsList = ref([
+            {
+                name: "Quick-Job-Memo.",
+                id: "job_memo_landing_page",
+                madeWith: ["laravel", "vue", "vuetify"],
+                description: "JobMemo streamlines your job application process, tracking interviews, tech stacks, and experiences in one space. Unlike traditional job portals, it emphasizes personalization to help you never miss an opportunity or forget crucial details.",
+                ImagesURL: job_memo_landing_page,
+                url: "",
+                github: "https://github.com/kaderabdul79/Quick-Job-Memo"
+            },
+            {
+                name: "Inventory-Management.",
+                id: "Inventory_management_dashboard.PNG",
+                madeWith: ["laravel", "vue", "vuetify"],
+                description: "The Inventory Management System is a web application built with Laravel and Vue.js, designed to help businesses keep track of their products, sizes, brands, and stocks. It provides a user-friendly interface for managing inventory efficiently.",
+                ImagesURL: Inventory_management_dashboard,
+                url: "",
+                github: "https://github.com/kaderabdul79/Blog_Application"
+            },
+            {
                 name: "Laravel with Vue Blog App.",
-                id: "laravel_vue_blog_app_dashboard",
+                id: "x",
                 madeWith: ["laravel", "vue"],
                 description: "Blog Application where Author can add category , publish post and manage them. Add authentication and user can read post also has implemented searching by category or post and showing related post according to the category.",
                 ImagesURL: laravel_vue_blog_app_dashboard,
-                url: "https://blog.kaderabdul.com/build/",
+                url: "",
                 github: "https://github.com/kaderabdul79/Blog_Application"
             },
             {
@@ -71,7 +101,7 @@ export default {
                 name: "laravel_bootstarp_ecommerce_app_dashboard",
                 id: "laravel_bootstarp_ecommerce_app_dashboard",
                 madeWith: ["laravel", "bootstrap"],
-                description: "For Authentication, Used Laravel UI package. Add Product and Manage Them from Dashboard. For a Product can have multiple sub images So, These Images will store seperate Table. Add Category and Manage Them from Dashboard. Add Brand and Manage Them from Dashboard. Add Slider and Manage Them from Dashboard and It will show fronted dynamically User can buy product.For add to card used 'bumbummen99/shoppingcart' this package. User can add product to card, update also they can remove from cart Multiple Image Upload, all store in local PC and retrieve also from there, just img name will goes to db.",
+                description: "E-commerce dashboard with Laravel and Bootstrap. Features include product, category, and brand management, image uploads, and a dynamic frontend. Utilizes Laravel UI for authentication and 'bumbummen99/shoppingcart' for the shopping cart.",
                 ImagesURL: laravel_bootstarp_ecommerce_app_dashboard,
                 url: "",
                 github: "https://github.com/kaderabdul79/dailyShop"
@@ -105,112 +135,35 @@ export default {
             },
         ])
 
-        return {
-            projectsList
-        }
-    }
-}
+const activeFilter = ref('all');
+
+const filteredProjects = computed(() => {
+  if (activeFilter.value === 'all') {
+    return projectsList.value;
+  } else {
+    const filterValue = activeFilter.value.toLowerCase();
+    return projectsList.value.filter(project => {
+      // console.log(project)
+      return project.madeWith.some(tech => tech.toLowerCase().includes(filterValue));
+    });
+  }
+});
+
+const filterProjects = (category) => {
+  // console.log(category)
+  activeFilter.value = category;
+};
+
+return {
+  projectsList,
+  activeFilter,
+  filteredProjects,
+  filterProjects
+};
+  }
+};
 </script>
 
 <style scoped>
-.projects {
-    background: white;
-    padding: 3rem 0;
-}
 
-.projects h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.projects .project-row {
-    display: flex;
-    margin-bottom: 3rem;
-}
-
-.projects .project-row .project-left {
-    width: 50%;
-    margin-right: 2rem;
-}
-
-.projects .project-row .project-left img {
-    width: 100%;
-    border: 1px solid lightgray;
-}
-
-.projects .project-row .project-right {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.projects .project-row .project-right h3 {
-    font-size: 1.25rem;
-}
-
-.projects .project-row .project-right .tech-stack-list {
-    display: flex;
-    flex-wrap: wrap;
-    list-style-type: none;
-    margin-top: 1rem;
-}
-
-.projects .project-row .project-right .tech-stack-list p {
-    margin-right: 1rem;
-}
-
-.projects .project-row .project-right .tech-stack-list li {
-    margin-right: 20px;
-    font-size: 1.5rem;
-}
-
-.projects .project-row .project-right .project-links {
-    margin-top: 1rem;
-}
-
-.projects .project-row #webscraper {
-    background-image: url("../img/top10songs.JPG");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    transition: background-image 0.2s ease-in-out;
-}
-
-.projects .project-row #webscraper:hover {
-    background-image: url("../img/top10songs.gif");
-}
-
-@media screen and (max-width: 860px) {
-    .projects .project-row {
-        display: flex;
-        margin-bottom: 3rem;
-        flex-direction: column;
-    }
-
-    .projects .project-row .project-left {
-        width: 100%;
-    }
-
-    .projects .project-row .project-right {
-        width: 100%;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .project-left {
-        min-height: 200px;
-    }
-}
-
-@media screen and (min-width: 501px) and (max-width: 700px) {
-    .project-left {
-        min-height: 300px;
-    }
-}
-
-@media screen and (min-width: 701px) and (max-width: 859px) {
-    .project-left {
-        min-height: 350px;
-    }
-}
 </style>
